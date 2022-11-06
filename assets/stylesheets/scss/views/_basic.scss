@@ -1,0 +1,18 @@
+.basic {
+  background-image: image-url('basic/hero/hero-bg.jpg');
+  background-position: top center;
+  background-repeat: no-repeat;
+
+  hr {
+    width: rem(400);
+    max-width: 65%;
+    height: 1px;
+    background: radial-gradient(rgba($color-black, 0.25), rgba($color-black, 0));
+    margin: 0 auto;
+
+    &.half {
+      width: rem(200);
+      max-width: 35%;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+/* Buttons */
+
+.button {
+  display: inline-block;
+  background: $color-black;
+  color: $color-white;
+  border-radius: 999rem;
+  padding: rem(12 22);
+  font-size: rem(12);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: $font-weight--semi-bold;
+  transition: all 0.2s $easing-in-out-sine;
+  transition-property: background, color;
+
+  &:hover {
+    background: darken($color-black, 20);
+  }
+
+  &--inverted {
+    background: $color-white;
+    color: $color-black;
+
+    &:hover {
+      background: darken($color-white, 10);
+    }
+  }
+
+  &--hollow {
+    color: $color-black;
+    background: transparent;
+    border: 2px solid $color-black;
+
+    &:hover {
+      background: $color-black;
+      color: $color-white;
+    }
+
+    &--inverted {
+      color: $color-white;
+      border: 2px solid $color-white;
+
+      &:hover {
+        background: $color-white;
+        color: $color-black;
+      }
+    }
+  }
+}

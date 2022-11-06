@@ -1,0 +1,115 @@
+/* Headings */
+
+// h1
+
+.styled-h1 {
+  font-family: $font-family--secondary;
+  font-size: rem(122);
+  line-height: $line-height--headings;
+
+  @include mq(xlarge down) {
+    font-size: rem(80);
+  }
+
+  @include mq(small down) {
+    font-size: rem(50);
+  }
+}
+
+h1 {
+  @extend .styled-h1;
+}
+
+// h2
+
+.styled-h2 {
+  font-family: $font-family--secondary;
+  font-size: rem(60);
+  line-height: $line-height--headings;
+
+  @include mq(medium down) {
+    font-size: rem(55);
+  }
+
+  @include mq(small down) {
+    font-size: rem(40);
+  }
+}
+
+h2 {
+  @extend .styled-h2;
+}
+
+// h3
+
+.styled-h3 {
+  font-family: $font-family--secondary;
+  font-size: rem(40);
+  line-height: $line-height--headings;
+
+  @include mq(medium down) {
+    font-size: rem(30);
+  }
+
+  @include mq(small down) {
+    font-size: rem(20);
+  }
+}
+
+h3 {
+  @extend .styled-h3;
+}
+
+// h4
+
+.styled-h4 {
+  font-size: rem(16);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: $font-weight--semi-bold;
+  line-height: $line-height--headings;
+
+  @include mq(medium down) {
+    font-size: rem(14);
+  }
+}
+
+h4 {
+  @extend .styled-h4;
+}
+
+// h5
+
+.styled-h5 {
+  font-size: rem(14);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: $font-weight--semi-bold;
+  line-height: $line-height--headings;
+
+  @include mq(medium down) {
+    font-size: rem(12);
+  }
+}
+
+h5 {
+  @extend .styled-h5;
+}
+
+// h6
+
+.styled-h6 {
+  font-size: rem(12);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: $font-weight--semi-bold;
+  line-height: $line-height--headings;
+
+  @include mq(medium down) {
+    font-size: rem(10);
+  }
+}
+
+h6 {
+  @extend .styled-h6;
+}

@@ -1,0 +1,188 @@
+/* Hero */
+.hero {
+  width: 100%;
+
+  &-content {
+    @extend %wrapper;
+
+    position: relative;
+  }
+
+  &-header,
+  &-banner,
+  &-footer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: rem(55 40);
+
+    @include mq(small down) {
+      padding: rem(25 10);
+    }
+  }
+
+  &-header {
+    @extend %clearfix;
+
+    .-logo {
+      float: left;
+      width: 50%;
+
+      @include mq(large down) {
+        width: calc(50% - #{rem(20)});
+        padding-left: rem(20);
+      }
+
+      @include mq(small down) {
+        width: 100%;
+        text-align: center;
+        padding-right: rem(20);
+      }
+
+      a {
+        display: inline-block;
+        transition: transform 0.2s $easing-in-out-sine;
+
+        &:hover {
+          transform: translateY(-3px);
+        }
+      }
+
+      svg {
+        width: rem(151);
+        height: rem(45);
+        fill: $color-white;
+      }
+    }
+
+    .-cta {
+      float: right;
+      width: 50%;
+      text-align: right;
+
+      @include mq(large down) {
+        width: calc(50% - #{rem(20)});
+        margin-right: rem(20);
+      }
+
+      @include mq(small down) {
+        display: none;
+      }
+    }
+  }
+
+  &-banner {
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+
+    h1 {
+      margin-bottom: rem(25);
+    }
+
+    .sub-title {
+      @extend .styled-h5;
+    }
+
+    .-cta {
+      position: absolute;
+      bottom: rem(-10);
+      left: 50%;
+      margin-left: rem(-12);
+      animation: attention 4s ease infinite;
+
+      @include mq(small down) {
+        bottom: rem(-20);
+      }
+    }
+  }
+
+  &-footer {
+    top: auto;
+    bottom: 0;
+
+    .-counter {
+      float: left;
+      width: 50%;
+      font-size: rem(12);
+      font-weight: $font-weight--semi-bold;
+
+      @include mq(large down) {
+        width: calc(50% - #{rem(20)});
+        padding-left: rem(20);
+      }
+
+      @include mq(small down) {
+        width: 100%;
+        padding-right: rem(20);
+        text-align: center;
+      }
+
+      .time {
+        color: rgba($color-white, 0.45);
+      }
+
+      span {
+        font-size: rem(30);
+        color: $color-white;
+        font-weight: $font-weight--regular;
+
+        &:not(:first-of-type) {
+          font-size: rem(26);
+          padding-left: rem(10);
+        }
+      }
+    }
+
+    .-social {
+      float: right;
+      width: 50%;
+      text-align: right;
+      font-size: rem(12);
+      font-weight: $font-weight--semi-bold;
+
+      @include mq(large down) {
+        width: calc(50% - #{rem(20)});
+        padding-right: rem(20);
+      }
+
+      @include mq(small down) {
+        display: none;
+      }
+
+      ul {
+        margin-top: rem(5);
+      }
+
+      li {
+        display: inline-block;
+        font-size: rem(16);
+
+        &:not(:last-of-type) {
+          padding-right: rem(10);
+        }
+      }
+
+      a {
+        display: block;
+        padding: rem(5 0);
+        transition: transform 0.2s $easing-in-out-sine;
+
+        &:hover {
+          transform: translateY(-3px);
+        }
+      }
+    }
+  }
+
+  &-threejs {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: $zi-below-content;
+    max-width: 100%;
+    overflow: hidden;
+  }
+}

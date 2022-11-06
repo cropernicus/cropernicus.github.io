@@ -1,0 +1,164 @@
+
+// -----------------------------------------------------------------------------
+// IMAGE HELPER
+
+@function image-url($relative-url) {
+  @return unquote("url('../images/#{$relative-url}')");
+}
+
+
+// -----------------------------------------------------------------------------
+// MEDIA QUERIES BREAKPOINTS
+// Used by the mq() mixin
+
+$mq-breakpoints: (
+  xxxsmall:  0,
+  xxsmall:   320,
+  xsmall:    480,
+  small:     640,
+  medium:    768,
+  large:     960,
+  xlarge:    1024,
+  xxlarge:   1200,
+  xxxlarge:  1400,
+  xxxxlarge: 1680
+) !default;
+
+// -----------------------------------------------------------------------------
+// MEDIA QUERIES MIXIN
+// Usage examples:
+//  - mq(medium down)
+//  - mq(large up)
+//  - mq(between small large)
+//  - mq(portrait)
+//  - mq(portrait, between small medium, xxxxlarge up, xsmall down)
+// Numeric values instead of keywords are acceptable as well:
+//  - mq(960 down)
+//  - mq(between 480 768)
+
+@mixin mq($args...) {
+  $conditions: ();
+  $medium: "screen";
+
+  @each $group in $args {
+    $arg1: nth($group, 1);
+
+    // orientation
+    @if index(("landscape", "portrait"), $arg1) {
+      $conditions: append($conditions, '(orientation: #{$arg1})');
+    }
+    // between
+    @else if $arg1 == "between" {
+      $from: get-mq-point(nth($group, 2), "up");
+      $to: get-mq-point(nth($group, 3), "down");
+      $conditions: append($conditions, "(min-width: #{$from}) and (max-width: #{$to})");
+    }
+    // up|down
+    @else {
+      $direction: nth($group, 2);
+      $point: get-mq-point($arg1, $direction);
+
+      @if $direction == "up" {
+        $direction: "min-width";
+      }
+
+      @else { // down
+        $direction: "max-width";
+      }
+
+      $conditions: append($conditions, '(#{$direction}: #{$point})');
+    }
+  }
+
+  $conditions_str: "";
+  $is_first: true;
+
+  @each $condition in $conditions {
+    @if $is_first == false {
+      $conditions_str: "#{$conditions_str}, ";
+    }
+    $conditions_str: "#{$conditions_str} #{$medium} and #{$condition}";
+    $is_first: false;
+  }
+
+  @media #{$conditions_str} {
+    @content;
+  }
+}
+
+// get mq()-ready breakpoint value
+
+@function get-mq-point($value, $direction) {
+  @if type-of($value) == "string" {
+    $value: map-get($mq-breakpoints, $value);
+  }
+
+  @else {
+    $value: strip-unit($value);
+  }
+
+  @if $direction == "up" {
+    $value: $value + 1;
+  }
+
+  @return em($value);
+}
+
+
+// -----------------------------------------------------------------------------
+// STRIP UNIT
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// -----------------------------------------------------------------------------
+// EM/REM CALC
+// Usage examples:
+//  - rem(10px)
+//  - rem(10)
+//  - rem(10 20)
+//  - rem(10 20 30 40)
+//  - rem(20 auto)
+
+$em-base: 16px !default;
+
+@function emrem($values, $base-value: $em-base, $type: "em") {
+  $max: length($values);
+  $newValues: ();
+
+  @if $type == "em" {
+    $type: 1em;
+  }
+
+  @else {
+    $type: 1rem;
+  }
+
+  @for $i from 1 through $max {
+    $iVal: nth($values, $i);
+
+    @if $iVal != auto {
+      $iVal: strip-unit($iVal) / strip-unit($base-value) * $type;
+    }
+
+    $newValues: append($newValues, $iVal);
+  }
+
+  @if $max == 1 {
+    @return nth($newValues, 1);
+  }
+
+  @else {
+    @return $newValues;
+  }
+}
+
+@function em($values, $base-value: $em-base) {
+  @return emrem($values, $base-value, "em");
+}
+
+@function rem($values, $base-value: $em-base) {
+  @return emrem($values, $base-value, "rem");
+}
+

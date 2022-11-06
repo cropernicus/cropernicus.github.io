@@ -1,0 +1,46 @@
+/* Gallery */
+.gallery {
+  @extend %wrapper;
+
+  position: relative;
+  padding-top: rem(100);
+  padding-bottom: rem(80);
+
+  @include mq(large down) {
+    padding-top: rem(70);
+    padding-bottom: rem(60);
+  }
+
+  @include mq(small down) {
+    padding-top: rem(50);
+    padding-bottom: rem(40);
+  }
+
+  &-grid {
+    .-image {
+      @include mq(small down) {
+        margin-top: rem(10);
+      }
+
+      a {
+        display: block;
+        box-shadow: 0px 10px 25px 10px rgba($color-black, 0.20);
+        transition: box-shadow .2s linear, transform .2s linear;
+
+        &:hover {
+          transform: translateY(-10px);
+          box-shadow: 0px 10px 35px 15px rgba($color-black, 0.20);
+
+          @include mq(small down) {
+            transform: translateY(-5px);
+          }
+        }
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+    }
+  }
+}

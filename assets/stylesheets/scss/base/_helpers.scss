@@ -1,0 +1,54 @@
+/* Helpers */
+
+//container
+%wrapper {
+  @include grid-row;
+
+  @include breakpoint(medium) {
+    padding-left: rem(10);
+    padding-right: rem(10);
+  }
+
+  @include breakpoint(large) {
+    padding-left: rem(40);
+    padding-right: rem(40);
+  }
+}
+
+.wrapper {
+  @extend %wrapper;
+}
+
+// clearfix
+%clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.clearfix {
+  @extend %clearfix;
+}
+
+// hidden
+.is-hidden {
+  display: none !important;
+}
+
+// visually hidden
+%vhidden {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+}
+
+.is-vhidden {
+  @extend %vhidden;
+}

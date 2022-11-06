@@ -1,0 +1,20 @@
+.app {
+  background-color: $color-blue;
+  background-image: image-url('app/hero/hero-bg.jpg');
+  background-position: top center;
+  background-repeat: no-repeat;
+  color: $color-white;
+
+  hr {
+    width: rem(400);
+    max-width: 65%;
+    height: 1px;
+    background: radial-gradient(rgba($color-white, 0.45), rgba($color-white, 0));
+    margin: 0 auto;
+
+    &.half {
+      width: rem(200);
+      max-width: 35%;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+/* Animations */
+@keyframes attention {
+  9% {
+    transform: none;
+  }
+  12% {
+    transform: translateY(-6px);
+  }
+  16% {
+    transform: translateY(2px);
+  }
+  20% {
+    transform: translateY(-3px);
+  }
+  24% {
+    transform: translateY(0);
+  }
+}

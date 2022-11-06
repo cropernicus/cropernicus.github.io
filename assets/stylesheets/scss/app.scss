@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+/*
+Aspekt
+Version: 1.0
+Author: Aether-Themes
+Author URI: http://www.AetherThemes.com
+*/
+
+
+/* =Table of Contents
+--------------------------------------------------------------
+  =External CSS files (Plugins & Grid)
+  =Base styles
+  =Typography
+  =Buttons
+  =Layout specific
+  =Sections
+*/
+
+/* =External CSS files
+-------------------------------------------------------------- */
+@import "external/foundation";
+@import "external/magnific-popup";
+@import "external/slick";
+
+/* =Base styles
+-------------------------------------------------------------- */
+@import "base/functions";
+@import "base/reset";
+@import "base/fonts";
+@import "base/layout";
+@import "base/helpers";
+@import "base/colors";
+@import "base/type";
+@import "base/easings";
+@import "base/animations";
+@import "base/zindex";
+@import "base/init";
+
+/* =Typography
+-------------------------------------------------------------- */
+@import "styled/headings";
+@import "styled/paragraph";
+
+/* =Buttons
+-------------------------------------------------------------- */
+@import "components/buttons";
+
+/* =Layout Specific
+-------------------------------------------------------------- */
+@import "views/app";
+
+/* =Sections
+-------------------------------------------------------------- */
+@import "partials/app/hero";
+@import "partials/app/highlights";
+@import "partials/app/gallery";
+@import "partials/app/clients";
+@import "partials/app/footer";
